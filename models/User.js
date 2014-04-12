@@ -22,7 +22,9 @@ var userSchema = new mongoose.Schema({
   },
 
   preferences: {
-
+    foodstyle: { type: String, default: ""},
+    distance: { type: Number, default: 10},
+    cost: { type: Number, default: 4 },
   },
 
   user_history: {

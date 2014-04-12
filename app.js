@@ -124,10 +124,10 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 
 
 // Itinerary Stuff
-app.get('/itinerary', passportConf.isAuthenticated, itineraryController.getItinerary);
-app.get('/itinerary/detail-:id', passportConf.isAuthenticated, itineraryController.getDetail);
+app.get('/itinerary', itineraryController.getItinerary);
+app.get('/itinerary/detail-:id', itineraryController.getDetail);
 
-app.post('/itinerary', passportConf.isAuthenticated, itineraryController.searchYelp);
+app.post('/itinerary', itineraryController.searchYelp);
 
 // API Stuff
 app.get('/api', apiController.getApi);
