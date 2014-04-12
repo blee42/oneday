@@ -2,20 +2,21 @@ extends layout
 
 block content
 	#home-container
-		.row
-			.col-md-4
-			.col-md-4
-				h1 One Day in...
-				form(method="POST", action='/itinerary')
-					input(type='hidden', name='_csrf', value=_csrf)
-					.input-group
-						input#search-term.form-control(type="text", placeholder="search", name="city")
-						.input-group-btn
-							button.btn.btn-default(type="submit")
-								i.fa.fa-search
-			.col-md-4
-		.row
-			br
-			a(href="/itinerary") itinerary
-			br
-			a(href="/itinerary/detail") itinerary detail
+		.container-fluid
+			.row
+				.col-md-4
+				.col-md-4
+					h1 One Day in...
+					form(method="POST", action='/itinerary')
+						input(type='hidden', name='_csrf', value=_csrf)
+						.input-group
+							input#search-term.form-control(type="text", placeholder="search", name="city")
+							.input-group-btn
+								button.btn.btn-default(type="submit")
+									i.fa.fa-search
+				.col-md-4
+			.row
+				br
+				a(href="/itinerary") itinerary
+				br
+				a(href="/itinerary/detail") itinerary detail
