@@ -8,18 +8,24 @@ var yelp = require("yelp").createClient(secrets.yelp);
 var User = require("../models/User");
 
 // var visited_businesses = [];
+var nullLocation = {}
+nullLocation["name"] = "Error: Data was not available for this location.";
+nullLocation["id"] = "error";
+nullLocation["rating"] = 0;
+nullLocation["location"] = ["Please try another location."];
 
 function stripData(data) {
   var info = {};
+
   info["name"] = data["name"];
   info["id"] = data["id"];
   info["rating"] = data["rating"];
-  info["phone"] = data["phone"];
+  info["phone"] = phoneFormat(data["phone"]);
   info["url"] = data["url"];
   info["snippet_text"] = data["snippet_text"];
   info["review_cnt"] = data["review_count"];
   info["categories"] = data["categories"];
-  info["location"] = data["location"]["address"] + ", " + data["location"]["city"] + " " + data["location"]["state_code"];
+  info["location"] = data["location"]["display_address"]
 
   return info;
 };
@@ -60,6 +66,9 @@ function getBestBusiness(businesses, visited) {
   });
 
   j = 0;
+  if (scores == [] || typeof(scores[0]) == "undefined") {
+    return nullLocation;
+  }
   while (alreadyVisited(businesses[scores[j][1]], visited)) {
    j++;
   }
@@ -94,10 +103,16 @@ exports.getDetail = function(req, res) {
   var locID = req.params.id
   yelp.business(locID, function(err, locationData) {
     // console.log(locationData);
-    location.push(stripDataDetail(locationData));
+    if (locID == "error") {
+      location.push(nullLocation);
+    }
+    else {
+      location.push(stripDataDetail(locationData));
+    }
     res.render('itinerary/detail', {
       title: 'Detail Page',
       loc: location[0]
+      
     });
   }) 
 };
