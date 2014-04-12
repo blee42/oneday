@@ -9,10 +9,10 @@ var User = require("../models/User");
 
 // var visited_businesses = [];
 var nullLocation = {}
-nullLocation["name"] = "Error: Data was not available for this location.";
-nullLocation["id"] = "error";
+nullLocation["name"] = "Oops! Data does not seem to be available for this location.";
+nullLocation["id"] = "no-data";
 nullLocation["rating"] = 0;
-nullLocation["location"] = ["Please try another location."];
+nullLocation["location"] = ["Try to find a cool activity in a different city! We'll update our databases as new data becomes available. Check back soon!"];
 
 function stripData(data) {
   var info = {};
@@ -103,7 +103,7 @@ exports.getDetail = function(req, res) {
   var locID = req.params.id
   yelp.business(locID, function(err, locationData) {
     // console.log(locationData);
-    if (locID == "error") {
+    if (locID == "no-data") {
       location.push(nullLocation);
     }
     else {
