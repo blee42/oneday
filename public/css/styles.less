@@ -9,10 +9,11 @@
 
 html, body {
   height: 100%;
+  background-color: white;
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 45px;
 }
 
 #wrap {
@@ -20,9 +21,9 @@ body {
   height: auto !important;
   height: 100%;
   /* Negative indent footer by its height */
-  margin: 0 auto -100px;
+  margin: 0 auto -50px;
   /* Pad bottom by footer height + (optional) extra spacing */
-  padding: 0 0 140px;
+  padding: 0 0 0px;
 }
 
 #footer {
@@ -30,13 +31,19 @@ body {
   font-size: 12px;
   padding-top: 40px;
   padding-bottom: 40px;
-  height: 100px;
+  height: 50px;
 }
 
 // Navbar
 // -------------------------
 
 @navbar-height: 45px;
+
+#nav-container {
+  margin:0;
+  padding:0;
+  border:none;
+}
 
 .navbar-nav .profile-image {
   width: 30px;
@@ -54,8 +61,26 @@ body {
   height: 45px;
 }
 
+.navbar-default .navbar-brand{
+  color:white;
+}
+
+.navbar-default .navbar-brand:hover{
+  color:white;
+}
+
 .navbar {
-  margin-bottom: 0;
+  margin: 0;
+  background-color: #B2008C;
+  padding:0;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color:white;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+  color:white;
 }
 
 // Social Buttons
@@ -114,7 +139,7 @@ legend {
 // Home CSS Styling
 #home-container {
   position: fixed;
-  text-align: center;
+  text-align: left;
   height:100%;
   color: white;
   background-image: url('../img/city-lights-bokeh.jpg');
@@ -126,16 +151,16 @@ legend {
 }
 
 #itinerary-container {
-  margin:50px;
+  margin:15px;
 }
 
 // Itinerary CSS Styling
 .event-entry {
   position:relative;
   // height:150px;
-  background-image: url('../img/city-lights-bokeh.jpg');
+  background-image: url('../img/brunch.jpg');
   background-repeat: no-repeat;
-  margin-bottom: 1px;
+  margin-bottom: 10px;
 }
 
 .event-text {
@@ -173,7 +198,51 @@ a .div-link {
 }
 
 #banner-photo {
-  background-color: red;
+  // background-image: url('../img/city-lights-bokeh.jpg');
+  // background-repeat: no-repeat;
   width: 100%;
   height:275px;
+}
+
+.container-fluid {
+  margin:0;
+  padding:0;
+  color:white;
+  background-image: url('../img/city-lights-bokeh.jpg');
+  background-repeat: no-repeat;
+}
+
+#details-container {
+  // margin: 15px;
+  background-color: black;
+  font-size: large;
+  opacity: 0.9;
+}
+
+#details-text{
+  margin:0 30px 0 30px;
+}
+
+#name-box {
+  margin: 50px 0 50px 0;
+}
+
+#star-box {
+  float:right;
+  margin: 75px 0 75px 0;
+}
+
+#additional-box {
+  margin: 50px 0 50px 0;
+}
+
+#map-box {
+  margin: 75px 0 75px 0;
+}
+
+
+@media screen and (max-width: 768px) {
+  body {
+    padding-top: 40px;
+  }
 }
