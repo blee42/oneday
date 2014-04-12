@@ -13,7 +13,7 @@ html, body {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 55px;
 }
 
 #wrap {
@@ -21,23 +21,30 @@ body {
   height: auto !important;
   height: 100%;
   /* Negative indent footer by its height */
-  margin: 0 auto -100px;
+  margin: 0 auto -50px;
   /* Pad bottom by footer height + (optional) extra spacing */
-  padding: 0 0 140px;
+  padding: 0 0 0px;
 }
 
 #footer {
   text-align: center;
   font-size: 12px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  height: 100px;
+  margin: 0;
+  padding:0;
+  height: 50px;
+  background-color: black;
 }
 
 // Navbar
 // -------------------------
 
 @navbar-height: 45px;
+
+#nav-container {
+  margin:0;
+  padding:0;
+  border:none;
+}
 
 .navbar-nav .profile-image {
   width: 30px;
@@ -65,7 +72,7 @@ body {
 
 .navbar {
   margin: 0;
-  background-color: #000044;
+  background-color: #B2008C;
   padding:0;
 }
 
@@ -152,36 +159,9 @@ legend {
 .event-entry {
   position:relative;
   // height:150px;
+  background-image: url('../img/brunch.jpg');
+  background-repeat: no-repeat;
   margin-bottom: 10px;
-}
-
-#event1 {
-  background-image: url('../img/brunch.jpg');
-  background-repeat: no-repeat;
-  &:before {
-    background: linear-gradient(to right, white , black);
-    opacity: 0.2;
-  }
-}
-
-#event2 {
-  background-image: url('../img/museum.jpg');
-  background-repeat: no-repeat;
-}
-
-#event3 {
-  background-image: url('../img/central.jpg');
-  background-repeat: no-repeat;
-}
-
-#event4 {
-  background-image: url('../img/brunch.jpg');
-  background-repeat: no-repeat;
-}
-
-#event5 {
-  background-image: url('../img/nightlife.jpg');
-  background-repeat: no-repeat;
 }
 
 .event-text {
@@ -219,7 +199,51 @@ a .div-link {
 }
 
 #banner-photo {
-  background-color: red;
+  // background-image: url('../img/city-lights-bokeh.jpg');
+  // background-repeat: no-repeat;
   width: 100%;
   height:275px;
+}
+
+.container-fluid {
+  margin:0;
+  padding:0;
+  color:white;
+  background-image: url('../img/city-lights-bokeh.jpg');
+  background-repeat: no-repeat;
+}
+
+#details-container {
+  // margin: 15px;
+  background-color: black;
+  font-size: large;
+  opacity: 0.9;
+}
+
+#details-text{
+  margin:0 30px 0 30px;
+}
+
+#name-box {
+  margin: 50px 0 50px 0;
+}
+
+#star-box {
+  float:right;
+  margin: 75px 0 75px 0;
+}
+
+#additional-box {
+  margin: 50px 0 50px 0;
+}
+
+#map-box {
+  margin: 75px 0 75px 0;
+}
+
+
+@media screen and (max-width: 768px) {
+  body {
+    padding-top: 40px;
+  }
 }
