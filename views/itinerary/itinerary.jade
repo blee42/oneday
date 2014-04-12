@@ -10,10 +10,18 @@ block content
 						img(src="fonts/food.png").event-icon
 						br
 						span #{brunchPlace.name}
-						span.fa.fa-star
-						span.fa.fa-star
-						span.fa.fa-star-half-o
-						span.fa.fa-star-o
+
+						- var ratingNum = 0
+						- for (var i=0; i < Math.floor(brunchPlace.rating); i++)
+							span.fa.fa-star
+						- var remaining = 5 - brunchPlace.rating
+							- if (remaining%1 != 0)
+								span.fa.fa-star-half-o
+									- var remaining = remaining - 1
+							- if (remaining > 0)
+								- for (var i=0; i < remaining; i++)
+									span.fa.fa-star-o
+
 						br
 						span #{brunchPlace.location}
 					.col-md-2.event-arrow-container
@@ -21,24 +29,84 @@ block content
 			a(href="/itinerary/detail").div-link
 				li.row.event-entry
 					.col-md-10.event-text
-						p NAME | Location | Reviews
+						img(src="fonts/food.png").event-icon
+						br
+						span #{eventPlace1.name}
+
+						- var ratingNum = 0
+						- for (var i=0; i < Math.floor(eventPlace1.rating); i++)
+							span.fa.fa-star
+						- var remaining = 5 - eventPlace1.rating
+							- if (remaining%1 != 0)
+								span.fa.fa-star-half-o
+									- var remaining = remaining - 1
+							- if (remaining > 0)
+								- for (var i=0; i < remaining; i++)
+									span.fa.fa-star-o
+						br
+						span #{eventPlace1.location}
 					.col-md-2.event-arrow-container
 						span.fa.fa-angle-right.event-arrow
 			a(href="/itinerary/detail").div-link
 				li.row.event-entry
 					.col-md-10.event-text
-						p NAME | Location | Reviews
+						img(src="fonts/food.png").event-icon
+						br
+						span #{eventPlace2.name}
+
+						- var ratingNum = 0
+						- for (var i=0; i < Math.floor(eventPlace2.rating); i++)
+							span.fa.fa-star
+						- var remaining = 5 - eventPlace2.rating
+							- if (remaining%1 != 0)
+								span.fa.fa-star-half-o
+									- var remaining = remaining - 1
+							- if (remaining > 0)
+								- for (var i=0; i < remaining; i++)
+									span.fa.fa-star-o
+						br
+						span #{eventPlace2.location}
 					.col-md-2.event-arrow-container
 						span.fa.fa-angle-right.event-arrow
 			a(href="/itinerary/detail").div-link
 				li.row.event-entry
 					.col-md-10.event-text
-						p NAME | Location | Reviews
+						img(src="fonts/food.png").event-icon
+						br
+						span #{dinnerPlace.name}
+
+						- var ratingNum = 0
+						- for (var i=0; i < Math.floor(dinnerPlace.rating); i++)
+							span.fa.fa-star
+						- var remaining = 5 - dinnerPlace.rating
+							- if (remaining%1 != 0)
+								span.fa.fa-star-half-o
+									- var remaining = remaining - 1
+							- if (remaining > 0)
+								- for (var i=0; i < remaining; i++)
+									span.fa.fa-star-o
+						br
+						span #{dinnerPlace.location}
 					.col-md-2.event-arrow-container
 						span.fa.fa-angle-right.event-arrow
 			a(href="/itinerary/detail").div-link
 				li.row.event-entry
 					.col-md-10.event-text
-						p NAME | Location | Reviews
+						img(src="fonts/food.png").event-icon
+						br
+						span #{nightPlace.name}
+
+						- var ratingNum = 0
+						- for (var i=0; i < Math.floor(nightPlace.rating); i++)
+							span.fa.fa-star
+						- var remaining = 5 - nightPlace.rating
+							- if (remaining%1 != 0)
+								span.fa.fa-star-half-o
+									- var remaining = remaining - 1
+							- if (remaining > 0)
+								- for (var i=0; i < remaining; i++)
+									span.fa.fa-star-o
+						br
+						span #{nightPlace.location}
 					.col-md-2.event-arrow-container
 						span.fa.fa-angle-right.event-arrow
