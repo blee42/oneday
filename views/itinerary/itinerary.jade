@@ -11,13 +11,15 @@ block content
 						br
 						span #{brunchPlace.name} | 
 
-						- for (var i=0; i< brunchPlace.rating; i++)
+						- var ratingNum = 0
+						- for (var i=0; i < Math.floor(brunchPlace.rating); i++)
 							span.fa.fa-star
 						- var remaining = 5 - brunchPlace.rating
 							- if (remaining%1 != 0)
 								span.fa.fa-star-half-o
-							- var emptyStar = remaining/1
-								- for (var i=0; i< emptyStar; i++)
+									- var remaining = remaining - 1
+							- if (remaining > 0)
+								- for (var i=0; i < remaining; i++)
 									span.fa.fa-star-o
 						//- span.fa.fa-star
 						//- span.fa.fa-star
