@@ -9,6 +9,7 @@
 
 html, body {
   height: 100%;
+  background-color: white;
 }
 
 body {
@@ -54,8 +55,26 @@ body {
   height: 45px;
 }
 
+.navbar-default .navbar-brand{
+  color:white;
+}
+
+.navbar-default .navbar-brand:hover{
+  color:white;
+}
+
 .navbar {
-  margin-bottom: 0;
+  margin: 0;
+  background-color: #000044;
+  padding:0;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color:white;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+  color:white;
 }
 
 // Social Buttons
@@ -114,7 +133,7 @@ legend {
 // Home CSS Styling
 #home-container {
   position: fixed;
-  text-align: center;
+  text-align: left;
   height:100%;
   color: white;
   background-image: url('../img/city-lights-bokeh.jpg');
@@ -126,16 +145,43 @@ legend {
 }
 
 #itinerary-container {
-  margin:50px;
+  margin:15px;
 }
 
 // Itinerary CSS Styling
 .event-entry {
   position:relative;
   // height:150px;
-  background-image: url('../img/city-lights-bokeh.jpg');
+  margin-bottom: 10px;
+}
+
+#event1 {
+  background-image: url('../img/brunch.jpg');
   background-repeat: no-repeat;
-  margin-bottom: 1px;
+  &:before {
+    background: linear-gradient(to right, white , black);
+    opacity: 0.2;
+  }
+}
+
+#event2 {
+  background-image: url('../img/museum.jpg');
+  background-repeat: no-repeat;
+}
+
+#event3 {
+  background-image: url('../img/central.jpg');
+  background-repeat: no-repeat;
+}
+
+#event4 {
+  background-image: url('../img/brunch.jpg');
+  background-repeat: no-repeat;
+}
+
+#event5 {
+  background-image: url('../img/nightlife.jpg');
+  background-repeat: no-repeat;
 }
 
 .event-text {
