@@ -5,6 +5,7 @@
 var secrets = require("../config/secrets");
 var async = require("async");
 var yelp = require("yelp").createClient(secrets.yelp);
+var User = require("../models/User");
 
 // var visited_businesses = [];
 
@@ -24,18 +25,18 @@ function stripData(data) {
 };
 
 function getBestBusiness(businesses, visited) {
-  var scores = []
-  for (var i=0; i < businesses.length; i++) {
-	scores.push([scoreBusiness(businesses[i]), i]);
+    var scores = []
+    for (var i=0; i < businesses.length; i++) {
+	 scores.push([scoreBusiness(businesses[i]), i]);
   }
 
-  scores.sort(function(x, y) {
-	return y[0] - x[0];
+    scores.sort(function(x, y) {
+	 return y[0] - x[0];
   });
 
   j = 0;
   while (alreadyVisited(businesses[scores[j][1]], visited)) {
-	j++;
+	 j++;
   }
   return businesses[scores[j][1]];
 };
@@ -70,51 +71,72 @@ exports.getDetail = function(req, res) {
 };
 
 exports.searchYelp = function(req, res) {
-	var visited_brunches = [];
-	var visited_events = [];
-	var visited_dinners = [];
-	var visited_nightlife = [];
 	var brunches = [];
-	var events = [];
+	var events1 = [];
+  var events2 = [];
 	var dinners = [];
 	var nightlives = [];
+
+  //Brunch
 	yelp.search({term: "lunch or brunch or breakfast", location: req.body.city}, function(err, brunchData) {
 		brunchData.businesses.forEach(function(i) {
 			brunches.push(stripData(i));
 		});
-		visited_brunches.unshift(getBestBusiness(brunches, visited_brunches));
 
-		yelp.search({term:"park or museum or landmark or zoo or hike", location: req.body.city}, function(err, eventsData) {
+    User.findById(req.user.id, function(err, user) {
+      user.user_history.brunches.unshift(getBestBusiness(brunches, user.user_history.brunches));
+    })
+
+    // Event ("outdoors")
+		yelp.search({term:"park or zoo or hike", location: req.body.city}, function(err, eventsData) {
 			eventsData.businesses.forEach(function(i) {
-				events.push(stripData(i));
+				events1.push(stripData(i));
 			});
-			visited_events.unshift(getBestBusiness(events, visited_events));
-				
-			yelp.search({term:"dinner", location: req.body.city}, function(err, dinnerData) {
-				dinnerData.businesses.forEach(function(i) {
-					dinners.push(stripData(i));
-				});
-				visited_dinners.unshift(getBestBusiness(dinners, visited_events));
-					
-				yelp.search({term:"nightlife or pub or bar or club or lounge", location: req.body.city}, function(err, barsData) {
-					barsData.businesses.forEach(function(i) {
-						nightlives.push(stripData(i));
-					});
-					visited_nightlife.unshift(getBestBusiness(nightlives, visited_events));
-					console.log(visited_brunches);
 
-						console.log(brunches);
-					res.render('itinerary/itinerary', {
-						searchTerm: req.body.city,
-						title: 'Itinerary',
-						brunchPlace: brunches[0],
-						eventPlace1: events[0],
-						eventPlace2: events[1],
-						dinnerPlace: dinners[0],
-						nightPlace: nightlives[0],
-					});
-				});
-			});
+      User.findById(req.user.id, function(err, user) {
+        user.user_history.events1.unshift(getBestBusiness(events1, user.user_history.events1));
+      })
+
+      // Event ("indoors")
+      yelp.search({term:"museum or landmark", location: req.body.city}, function(err, eventsData) {
+      eventsData.businesses.forEach(function(i) {
+        events2.push(stripData(i));
+      });
+
+      User.findById(req.user.id, function(err, user) {
+        user.user_history.events2.unshift(getBestBusiness(events2, user.user_history.events2));
+      });
+
+        // Dinner							
+  			yelp.search({term:"dinner", location: req.body.city}, function(err, dinnerData) {
+  				dinnerData.businesses.forEach(function(i) {
+  					dinners.push(stripData(i));
+  				});
+
+          User.findById(req.user.id, function(err, user) {
+            user.user_history.dinners.unshift(getBestBusiness(dinners, user.user_history.dinners));
+          });
+  				
+          // Nightlife		
+  				yelp.search({term:"nightlife or pub or bar or club or lounge", location: req.body.city}, function(err, barsData) {
+  					barsData.businesses.forEach(function(i) {
+  						nightlives.push(stripData(i));
+  					});
+  					User.findById(req.user.id, function(err, user) {
+              user.user_history.nightlives.unshift(getBestBusiness(nightlives, user.user_history.nightlives));
+    					res.render('itinerary/itinerary', {
+    						searchTerm: req.body.city,
+    						title: 'Itinerary',
+    						brunchPlace: user.user_history.brunches[0],
+    						eventPlace1: user.user_history.events1[0],
+    						eventPlace2: user.user_history.events2[0],
+    						dinnerPlace: user.user_history.dinners[0],
+    						nightPlace: user.user_history.nightlives[0],
+  					 });
+            });
+  				});
+  			});
+      });
 		});
 	});
 };
