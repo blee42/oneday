@@ -9,21 +9,35 @@ block content
 				.row#name-row
 					#name.col-xs-6
 						.detail-text#name-box
-							h1 Chipotle
-							span 528 E Green St #101
+							h1 #{loc.name}
+							span #{loc.location[0]}
 							br
-							span Champaign, IL
+							span
+								for locPart, i in loc.location
+									if (i !=0) 
+										if (i != loc.location.length-1)
+											| #{locPart}, 
+										else
+											| #{locPart}
+
 							br
-							span.fa.fa-star
-							span.fa.fa-star
-							span.fa.fa-star-half-o
-							span.fa.fa-star-o
+							- for (var i=0; i < Math.floor(loc.rating); i++)
+								span.fa.fa-star
+							- var remaining = 5 - loc.rating
+								- if (remaining%1 != 0)
+									span.fa.fa-star-half-o
+										- var remaining = remaining - 1
+								- if (remaining > 0)
+									- for (var i=0; i < remaining; i++)
+										span.fa.fa-star-o
 							br
-							span 9AM - 10PM
+
+							span #{loc.phone}
 							br
-							span (555) 782-3746
-							br
-							a(href="www.chipotle.com") www.chipotle.com
+							a(href="#{loc.url}") #{loc.url}
 					#rating.col-xs-6
 						.detail-text#map-box
-							iframe(width='100%', height='200', frameborder='0', style='border: 0;', src='https://www.google.com/maps/embed/v1/place?key=AIzaSyC4PUr3CsIP7-2ZFbRovCjt3K2rD4k8jh8&q=Space+Needle,Seattle+WA')
+							- var query = loc.location[0] + "," + loc.location[loc.location.length-1]
+								//- span #{query}
+								iframe(width='100%', height='200', frameborder='0', style='border: 0;', src='https://www.google.com/maps/embed/v1/place?key=AIzaSyC4PUr3CsIP7-2ZFbRovCjt3K2rD4k8jh8&q=' + query)
+								//- iframe(width='100%', height='200', frameborder='0', style='border: 0;', src='https://www.google.com/maps/embed/v1/place?key=AIzaSyC4PUr3CsIP7-2ZFbRovCjt3K2rD4k8jh8&q=Space+Needle,Seattle+WA')

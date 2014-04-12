@@ -21,6 +21,20 @@ var userSchema = new mongoose.Schema({
     picture: { type: String, default: '' }
   },
 
+  preferences: {
+    foodstyle: { type: String, default: ""},
+    distance: { type: Number, default: 10},
+    cost: { type: Number, default: 4 },
+  },
+
+  user_history: {
+    brunches: {type: Array, default: ""},
+    events1: {type: Array, default: ""},
+    events2: {type: Array, default: ""},
+    dinners: {type: Array, default: ""},
+    nightlives: {type: Array, default: ""},
+  },
+
   resetPasswordToken: String,
   resetPasswordExpires: Date
 });

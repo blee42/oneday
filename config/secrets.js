@@ -109,5 +109,10 @@ module.exports = {
     consumer_secret: "BTNoPKfX7FKlz_I1nv1zYwIwzvQ",
     token: "yVdpRN18qZlv3sz8PHr8MaivhJXlCTxW",
     token_secret: "zKkZVANtIqZYyy3WGBtaTtkrLMA"
+  },
+
+  flickr: {
+    key: "5b1395cf686cbdf017d5d6512459e501",
+    secret: "ccdf6fefce6ce4c4",
   }
 };
