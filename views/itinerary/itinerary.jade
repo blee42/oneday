@@ -2,7 +2,7 @@ extends ../layout
 
 block content
 	#itinerary-container
-		h1 One Day in "CITY NAME"
+		h1 One Day in #{searchTerm}
 		ul.list-group.no-dot
 			a(href="/itinerary/detail").div-link
 				li.row.event-entry

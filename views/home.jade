@@ -6,7 +6,8 @@ block content
 			.col-md-4
 			.col-md-4
 				h1 One Day in...
-				form(method="POST")
+				form(method="POST", action='/itinerary')
+					input(type='hidden', name='_csrf', value=_csrf)
 					.input-group
 						input#search-term.form-control(type="text", placeholder="search", name="city")
 						.input-group-btn
