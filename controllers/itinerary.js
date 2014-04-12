@@ -8,16 +8,6 @@ var yelp = require("yelp").createClient(secrets.yelp);
 
 var visited_businesses = [];
 
-function getNewBusiness(terms, location) {
-  yelp.search({term: terms, location: location}, function(err, data) {
-    var business_list = [];
-    data.businesses.forEach(function(i) {
-      business_list.push(stripData(i));
-    });
-    visited_businesses.unshift(getBestBusiness(business_list, visited_businesses));
-  });
-};
-
 function stripData(data) {
   var info = {};
   info["name"] = data["name"];
@@ -32,16 +22,16 @@ function stripData(data) {
 function getBestBusiness(businesses, visited) {
   var scores = []
   for (var i=0; i < businesses.length; i++) {
-    scores.push([scoreBusiness(businesses[i]), i]);
+	scores.push([scoreBusiness(businesses[i]), i]);
   }
 
   scores.sort(function(x, y) {
-    return y[0] - x[0];
+	return y[0] - x[0];
   });
 
   j = 0;
   while (alreadyVisited(businesses[scores[j][1]], visited)) {
-    j++;
+	j++;
   }
   return businesses[scores[j][1]];
 };
@@ -54,33 +44,40 @@ function scoreBusiness(business) {
 function alreadyVisited(business, visited) {
   var bool = 0;
   for (var i=0; i < visited.length; i++) {
-    if (business["name"] == visited[i]["name"]) {
-      bool++;
-    }
+	if (business["name"] == visited[i]["name"]) {
+	  bool++;
+	}
   }
   return bool;
 };
 
 exports.getItinerary = function(req, res) {
   res.render('itinerary/itinerary', {
-    title: 'Itinerary',
-    searchTerm: "CITY"
+	title: 'Itinerary',
+	searchTerm: "CITY"
   });
 };
 
 
 exports.getDetail = function(req, res) {
   res.render('itinerary/detail', {
-    title: 'Detail Page'
+	title: 'Detail Page'
   });
 };
 
 exports.searchYelp = function(req, res) {
-  getNewBusiness("brunch", req.body.city);
-  console.log(visited_businesses);
-	res.render('itinerary/itinerary', {
-		searchTerm: req.body.city,
-		title: 'Itinerary',
-    brunchPlace: visited_businesses[0],
+	yelp.search({term: "brunch", location: req.body.city}, function(err, data) {
+		var business_list = [];
+		data.businesses.forEach(function(i) {
+			business_list.push(stripData(i));
+		});
+		visited_businesses.unshift(getBestBusiness(business_list, visited_businesses));
+
+		console.log(visited_businesses);
+		res.render('itinerary/itinerary', {
+			searchTerm: req.body.city,
+			title: 'Itinerary',
+			brunchPlace: visited_businesses[0],
+		});
 	});
 };

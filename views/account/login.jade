@@ -19,7 +19,7 @@ block content
             | Login
           a.btn.btn-link(href='/forgot') Forgot your password?
         hr
-      //- if secrets.facebookAuth
+      if secrets.facebookAuth
         a.btn.btn-block.btn-facebook.btn-social(href='/auth/facebook')
           i.fa.fa-facebook
           | Sign in with Facebook
