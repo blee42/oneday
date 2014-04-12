@@ -9,12 +9,23 @@ block content
 					.col-md-10.event-text
 						img(src="fonts/food.png").event-icon
 						br
-						span #{brunchPlace.name}
-						span.fa.fa-star
-						span.fa.fa-star
-						span.fa.fa-star
-						span.fa.fa-star-half-o
-						span.fa.fa-star-o
+						span #{brunchPlace.name} | 
+
+						- var ratingNum = 0
+						- for (var i=0; i < Math.floor(brunchPlace.rating); i++)
+							span.fa.fa-star
+						- var remaining = 5 - brunchPlace.rating
+							- if (remaining%1 != 0)
+								span.fa.fa-star-half-o
+									- var remaining = remaining - 1
+							- if (remaining > 0)
+								- for (var i=0; i < remaining; i++)
+									span.fa.fa-star-o
+						//- span.fa.fa-star
+						//- span.fa.fa-star
+						//- span.fa.fa-star
+						//- span.fa.fa-star-half-o
+						//- span.fa.fa-star-o
 						br
 						span #{brunchPlace.location}
 					.col-md-2.event-arrow-container
