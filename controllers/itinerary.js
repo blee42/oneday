@@ -159,7 +159,7 @@ exports.searchYelp = function(req, res) {
               user.user_history.nightlives.unshift(getBestBusiness(nightlives, user.user_history.nightlives));
               user.save();
     					res.render('itinerary/itinerary', {
-    						searchTerm: req.body.city,
+    						searchTerm: req.body.city.charAt(0).toUpperCase() + req.body.city.slice(1).toLowerCase(),
     						title: 'Itinerary',
     						brunchPlace: user.user_history.brunches[0],
     						eventPlace1: user.user_history.events1[0],

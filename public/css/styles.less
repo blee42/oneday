@@ -13,7 +13,7 @@ html, body {
 }
 
 body {
-  padding-top: 45px;
+  padding-top: 40px;
 }
 
 #wrap {
@@ -157,17 +157,36 @@ legend {
 // Itinerary CSS Styling
 .event-entry {
   position:relative;
-  // height:150px;
-  background-image: url('../img/brunch.jpg');
-  background-repeat: no-repeat;
   margin-bottom: 10px;
+  background-repeat: no-repeat;
+  text-shadow: 1px 1px gray;
+}
+
+#event1 {
+  background-image: url('../img/brunch.jpg');
+}
+
+#event2 {
+  background-image: url('../img/park.jpg');
+}
+
+#event3 {
+  background-image: url('../img/shopping.jpg');
+}
+
+#event4 {
+  background-image: url('../img/dinner.jpg');
+}
+
+#event5 {
+  background-image: url('../img/nightlife.jpg');
 }
 
 .event-text {
   position: absolute;
   color:white;
   bottom: 0;
-  margin:15px 15px 5px 15px;
+  margin:25px 25px 15px 25px;
   font-size: large;
 }
 
@@ -178,7 +197,7 @@ legend {
 
 .event-arrow {
   float:right;
-  margin: 75px 15px 75px 0;
+  margin: 125px 15px 125px 0;
   font-size: xx-large;
 }
 
@@ -244,5 +263,11 @@ a .div-link {
 @media screen and (max-width: 768px) {
   body {
     padding-top: 40px;
+  }
+  .event-arrow {
+  margin: 75px 15px 75px 0;
+  }
+  .event-text {
+  margin:15px 15px 5px 15px;
   }
 }
