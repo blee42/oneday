@@ -19,6 +19,7 @@ var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
+var itineraryController = require('./controllers/itinerary');
 
 /**
  * API keys + Passport configuration.
@@ -102,6 +103,8 @@ app.use(express.errorHandler());
  */
 
 app.get('/', homeController.index);
+
+// Login Stuff
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
@@ -118,6 +121,13 @@ app.post('/account/profile', passportConf.isAuthenticated, userController.postUp
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+
+
+// Itinerary Stuff
+app.get('/itinerary', itineraryController.getItinerary);
+app.get('/itinerary/detail', itineraryController.getDetail);
+
+// API Stuff
 app.get('/api', apiController.getApi);
 app.get('/api/lastfm', apiController.getLastfm);
 app.get('/api/nyt', apiController.getNewYorkTimes);

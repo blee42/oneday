@@ -1,8 +1,19 @@
 extends layout
 
 block content
-  h1 Bootstrap starter template
-  p.lead
-    | Use this document as a way to quickly start any new project.
-    br
-    | All you get is this text and a mostly barebones HTML document.
+	#home-container
+		.row
+			.col-md-4
+			.col-md-4
+				h1 One Day in...
+				.input-group
+					input#search-term.form-control(type="text", placeholder="search")
+					.input-group-btn
+						button.btn.btn-default(type="submit")
+							i.fa.fa-search
+			.col-md-4
+		.row
+			br
+			a(href="/itinerary") itinerary
+			br
+			a(href="/itinerary/detail") itinerary detail
