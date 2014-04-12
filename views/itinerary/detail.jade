@@ -37,6 +37,7 @@ block content
 							a(href="#{loc.url}") #{loc.url}
 					#rating.col-xs-6
 						.detail-text#map-box
-							- var query = loc.location
+							- var query = loc.location[0] + "," + loc.location[loc.location.length-1]
+								//- span #{query}
 								iframe(width='100%', height='200', frameborder='0', style='border: 0;', src='https://www.google.com/maps/embed/v1/place?key=AIzaSyC4PUr3CsIP7-2ZFbRovCjt3K2rD4k8jh8&q=' + query)
 								//- iframe(width='100%', height='200', frameborder='0', style='border: 0;', src='https://www.google.com/maps/embed/v1/place?key=AIzaSyC4PUr3CsIP7-2ZFbRovCjt3K2rD4k8jh8&q=Space+Needle,Seattle+WA')
