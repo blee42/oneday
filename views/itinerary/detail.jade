@@ -2,14 +2,28 @@ extends ../layout
 
 block content
 	.container-fluid
-		#details-container
+		.row#photo-row
 			#banner-photo
-			#detail.col-md-6
-				p Name
-				p rating
-				p location
-				p hours
-				p map
-				p link
-			#map.col-md-6
-			
+		#details-container
+			#details-text
+				.row#name-row
+					#name.col-xs-6
+						.detail-text#name-box
+							h1 Chipotle
+							span 528 E Green St #101
+							br
+							span Champaign, IL
+							br
+							span.fa.fa-star
+							span.fa.fa-star
+							span.fa.fa-star-half-o
+							span.fa.fa-star-o
+							br
+							span 9AM - 10PM
+							br
+							span (555) 782-3746
+							br
+							a(href="www.chipotle.com") www.chipotle.com
+					#rating.col-xs-6
+						.detail-text#map-box
+							iframe(width='100%', height='200', frameborder='0', style='border: 0;', src='https://www.google.com/maps/embed/v1/place?key=AIzaSyC4PUr3CsIP7-2ZFbRovCjt3K2rD4k8jh8&q=Space+Needle,Seattle+WA')
