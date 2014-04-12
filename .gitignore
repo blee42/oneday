@@ -1,3 +1,11 @@
 node_modules
 .DS_Store
+<<<<<<< HEAD
 data
+=======
+local.0
+test.0
+local.ns
+test.ns
+mongod.lock
+>>>>>>> dev

@@ -102,5 +102,12 @@ module.exports = {
     client_secret: process.env.PAYPAL_SECRET || 'Your Client Secret',
     returnUrl: process.env.PAYPAL_RETURN_URL || 'http://localhost:3000/api/paypal/success',
     cancelUrl: process.env.PAYPAL_CANCEL_URL || 'http://localhost:3000/api/paypal/cancel'
+  },
+
+  yelp: {
+    consumer_key: "Rf7uNnk2hIixyx_y_DPFvQ", 
+    consumer_secret: "BTNoPKfX7FKlz_I1nv1zYwIwzvQ",
+    token: "yVdpRN18qZlv3sz8PHr8MaivhJXlCTxW",
+    token_secret: "zKkZVANtIqZYyy3WGBtaTtkrLMA"
   }
 };
