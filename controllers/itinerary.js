@@ -24,6 +24,27 @@ function stripData(data) {
   return info;
 };
 
+function phoneFormat(phone) {
+  phone = phone.replace(/[^0-9]/g, '');
+  phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+  return phone;
+}
+
+function stripDataDetail(data) {
+  var info = {};
+  info["name"] = data["name"];
+  info["id"] = data["id"];
+  info["rating"] = data["rating"];
+  info["phone"] = phoneFormat(data["phone"]);
+  info["url"] = data["url"];
+  info["snippet_text"] = data["snippet_text"];
+  info["review_cnt"] = data["review_count"];
+  info["categories"] = data["categories"];
+  info["location"] = data["location"]["display_address"]
+
+  return info;
+};
+
 function getBestBusiness(businesses, visited) {
     var scores = []
     for (var i=0; i < businesses.length; i++) {
@@ -65,9 +86,16 @@ exports.getItinerary = function(req, res) {
 
 
 exports.getDetail = function(req, res) {
-  res.render('itinerary/detail', {
-	title: 'Detail Page'
-  });
+	var location = [];
+	var locID = req.params.id
+	yelp.business(locID, function(err, locationData) {
+		// console.log(locationData);
+		location.push(stripDataDetail(locationData));
+		res.render('itinerary/detail', {
+			title: 'Detail Page',
+			loc: location[0]
+		});
+	}) 
 };
 
 exports.searchYelp = function(req, res) {

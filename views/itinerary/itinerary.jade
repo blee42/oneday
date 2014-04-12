@@ -4,7 +4,7 @@ block content
 	#itinerary-container
 		h1 One Day in #{searchTerm}
 		ul.list-group.no-dot
-			a(href="/itinerary/detail").div-link
+			a(href="/itinerary/detail-#{brunchPlace.id}").div-link
 				li.row.event-entry
 					.col-md-10.event-text
 						img(src="fonts/food.png").event-icon
@@ -26,7 +26,7 @@ block content
 						span #{brunchPlace.location}
 					.col-md-2.event-arrow-container
 						span.fa.fa-angle-right.event-arrow
-			a(href="/itinerary/detail").div-link
+			a(href="/itinerary/detail-#{eventPlace1.id}").div-link
 				li.row.event-entry
 					.col-md-10.event-text
 						img(src="fonts/star.png").event-icon
@@ -47,7 +47,7 @@ block content
 						span #{eventPlace1.location}
 					.col-md-2.event-arrow-container
 						span.fa.fa-angle-right.event-arrow
-			a(href="/itinerary/detail").div-link
+			a(href="/itinerary/detail-#{eventPlace2.id}").div-link
 				li.row.event-entry
 					.col-md-10.event-text
 						img(src="fonts/star.png").event-icon
@@ -68,7 +68,7 @@ block content
 						span #{eventPlace2.location}
 					.col-md-2.event-arrow-container
 						span.fa.fa-angle-right.event-arrow
-			a(href="/itinerary/detail").div-link
+			a(href="/itinerary/detail-#{dinnerPlace.id}").div-link
 				li.row.event-entry
 					.col-md-10.event-text
 						img(src="fonts/food.png").event-icon
@@ -89,7 +89,7 @@ block content
 						span #{dinnerPlace.location}
 					.col-md-2.event-arrow-container
 						span.fa.fa-angle-right.event-arrow
-			a(href="/itinerary/detail").div-link
+			a(href="/itinerary/detail-#{nightPlace.id}").div-link
 				li.row.event-entry
 					.col-md-10.event-text
 						img(src="fonts/nightlife.png").event-icon
