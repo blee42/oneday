@@ -6,7 +6,8 @@
       span.icon-bar
       span.icon-bar
     if !searchTerm
-      a.navbar-brand(href='/') One Day ...
+      if title != 'Home'
+        a.navbar-brand(href='/') One Day ...
     else
       a.navbar-brand(href='/') One Day in 
         span.stalemate-font #{searchTerm}

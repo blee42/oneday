@@ -101,6 +101,7 @@ exports.getItinerary = function(req, res) {
 exports.getDetail = function(req, res) {
   var location = [];
   var locID = req.params.id
+ 
   yelp.business(locID, function(err, locationData) {
     // console.log(locationData);
     if (locID == "no-data") {
