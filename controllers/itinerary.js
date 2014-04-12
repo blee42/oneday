@@ -49,7 +49,7 @@ function scoreBusiness(business) {
 function alreadyVisited(business, visited) {
   var bool = 0;
   for (var i=0; i < visited.length; i++) {
-	if (business["name"] == visited[i]["name"]) {
+	if (business["id"] == visited[i]["id"]) {
 	  bool++;
 	}
   }
@@ -85,6 +85,7 @@ exports.searchYelp = function(req, res) {
 
     User.findById(req.user.id, function(err, user) {
       user.user_history.brunches.unshift(getBestBusiness(brunches, user.user_history.brunches));
+      user.save();
     })
 
     // Event ("outdoors")
@@ -95,6 +96,7 @@ exports.searchYelp = function(req, res) {
 
       User.findById(req.user.id, function(err, user) {
         user.user_history.events1.unshift(getBestBusiness(events1, user.user_history.events1));
+        user.save();
       })
 
       // Event ("indoors")
@@ -105,6 +107,7 @@ exports.searchYelp = function(req, res) {
 
       User.findById(req.user.id, function(err, user) {
         user.user_history.events2.unshift(getBestBusiness(events2, user.user_history.events2));
+        user.save();
       });
 
         // Dinner							
@@ -114,7 +117,9 @@ exports.searchYelp = function(req, res) {
   				});
 
           User.findById(req.user.id, function(err, user) {
-            user.user_history.dinners.unshift(getBestBusiness(dinners, user.user_history.dinners));
+            a = getBestBusiness(dinners, user.user_history.dinners);
+            user.user_history.dinners.unshift(a);
+            user.save();
           });
   				
           // Nightlife		
@@ -124,6 +129,7 @@ exports.searchYelp = function(req, res) {
   					});
   					User.findById(req.user.id, function(err, user) {
               user.user_history.nightlives.unshift(getBestBusiness(nightlives, user.user_history.nightlives));
+              user.save();
     					res.render('itinerary/itinerary', {
     						searchTerm: req.body.city,
     						title: 'Itinerary',
