@@ -101,14 +101,17 @@ exports.searchYelp = function(req, res) {
 						nightlives.push(stripData(i));
 					});
 					visited_nightlife.unshift(getBestBusiness(nightlives, visited_events));
+					console.log(visited_brunches);
 
+						console.log(brunches);
 					res.render('itinerary/itinerary', {
 						searchTerm: req.body.city,
 						title: 'Itinerary',
-						brunchPlace: brunches,
-						eventPlace: events,
-						dinnerPlace: dinners,
-						nightPlace: nightlives,
+						brunchPlace: brunches[0],
+						eventPlace1: events[0],
+						eventPlace2: events[1],
+						dinnerPlace: dinners[0],
+						nightPlace: nightlives[0],
 					});
 				});
 			});
