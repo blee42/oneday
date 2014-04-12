@@ -6,11 +6,12 @@ block content
 			.col-md-4
 			.col-md-4
 				h1 One Day in...
-				.input-group
-					input#search-term.form-control(type="text", placeholder="search")
-					.input-group-btn
-						button.btn.btn-default(type="submit")
-							i.fa.fa-search
+				form(method="POST")
+					.input-group
+						input#search-term.form-control(type="text", placeholder="search", name="city")
+						.input-group-btn
+							button.btn.btn-default(type="submit")
+								i.fa.fa-search
 			.col-md-4
 		.row
 			br

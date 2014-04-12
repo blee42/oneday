@@ -16,3 +16,10 @@ exports.getDetail = function(req, res) {
     title: 'Detail Page'
   });
 };
+
+exports.searchYelp = function(req, res) {
+	res.render('itinerary/itinerary', {
+		searchTerm: req.body.city,
+		title: 'Itinerary'
+	});
+};

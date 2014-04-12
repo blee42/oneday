@@ -127,6 +127,8 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 app.get('/itinerary', itineraryController.getItinerary);
 app.get('/itinerary/detail', itineraryController.getDetail);
 
+app.post('/', itineraryController.searchYelp);
+
 // API Stuff
 app.get('/api', apiController.getApi);
 app.get('/api/lastfm', apiController.getLastfm);
