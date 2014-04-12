@@ -160,17 +160,18 @@ exports.searchYelp = function(req, res) {
   					barsData.businesses.forEach(function(i) {
   						nightlives.push(stripData(i));
   					});
-
-            nightlife = getEvent(nightlives, req.user, "nightlives");
-            
-  					res.render('itinerary/itinerary', {
-						searchTerm: req.body.city,
-						title: 'Itinerary',
-						brunchPlace: brunch,
-						eventPlace1: event1,
-						eventPlace2: event2,
-						dinnerPlace: dinner,
-						nightPlace: nightlife,
+  					User.findById(req.user.id, function(err, user) {
+              user.user_history.nightlives.unshift(getBestBusiness(nightlives, user.user_history.nightlives));
+              user.save();
+    					res.render('itinerary/itinerary', {
+    						searchTerm: req.body.city.charAt(0).toUpperCase() + req.body.city.slice(1).toLowerCase(),
+    						title: 'Itinerary',
+    						brunchPlace: user.user_history.brunches[0],
+    						eventPlace1: user.user_history.events1[0],
+    						eventPlace2: user.user_history.events2[0],
+    						dinnerPlace: user.user_history.dinners[0],
+    						nightPlace: user.user_history.nightlives[0],
+  					 });
             });
   				});
   			});
