@@ -10,7 +10,7 @@ block content
 					form(method="POST", action='/itinerary')
 						input(type='hidden', name='_csrf', value=_csrf)
 						.input-group
-							input#search-term.form-control(type="text", placeholder="search", name="city")
+							input#search-term.form-control(type="text", placeholder="type a city name", name="city")
 							.input-group-btn
 								button.btn.btn-default(type="submit")
 									i.fa.fa-search
