@@ -3,6 +3,7 @@
 @import "lib/bootstrap/bootstrap";
 @import "lib/bootstrap-social";
 @import "themes/default";
+@import url(http://fonts.googleapis.com/css?family=Stalemate);
 
 // Scaffolding
 // -------------------------
@@ -13,7 +14,7 @@ html, body {
 }
 
 body {
-  padding-top: 40px;
+  padding-top: 75px;
 }
 
 #wrap {
@@ -56,17 +57,20 @@ body {
   background-repeat: no-repeat;
   background-size: 40px;
   background-position: left center;
-  padding-left: 50px;
-  margin-left: 15px;
+  // padding-left: 50px;
+  // margin-left: 15px;
   height: 45px;
+  font-size: 20pt;
 }
 
 .navbar-default .navbar-brand{
   color:white;
+  margin:25px;
 }
 
 .navbar-default .navbar-brand:hover{
   color:white;
+  margin:25px;
 }
 
 .navbar {
@@ -81,6 +85,12 @@ body {
 }
 
 .navbar-default .navbar-nav > li > a:hover{
+  color:white;
+}
+
+.stalemate-font {
+  font-family: Stalemate;
+  font-size: 60pt;
   color:white;
 }
 
@@ -152,6 +162,11 @@ legend {
   margin-top: 250px;
 }
 
+#itinerary-wrap {
+  background-color: black;
+  opacity: 0.9;
+}
+
 #itinerary-container {
   margin:15px;
 }
@@ -201,6 +216,7 @@ legend {
   float:right;
   margin: 125px 15px 125px 0;
   font-size: xx-large;
+  color:white;
 }
 
 .no-dot {
