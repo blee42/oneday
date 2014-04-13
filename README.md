@@ -22,5 +22,5 @@ Special thanks to UIUC for being a fantastic host.
 *	GoogleMapsAPI
 
 The full application is hosted on Heroku, at (https://onedayin.herokuapp.com/).
-This repository will occasionally be updated with experimental builds before the website is updated.
+This repository will occasionally be updated with experimental builds before the website reflects such changes.
 
