@@ -137,6 +137,9 @@ exports.searchYelp = function(req, res) {
       User.findById(req.user.id, function(err, user) {
         brunch = getBestBusiness(brunches, user.user_history.brunches);
         user.user_history.brunches.unshift(brunch);
+        if (user.user_history.brunches.length > 10) {
+          user.user_history.brunches.pop();
+        }
         user.save();
       });
     }
@@ -154,6 +157,9 @@ exports.searchYelp = function(req, res) {
         User.findById(req.user.id, function(err, user) {
           event1 = getBestBusiness(events1, user.user_history.events1);
           user.user_history.events1.unshift(event1);
+          if (user.user_history.events1.length > 10) {
+            user.user_history.events1.pop();
+          }
           user.save();
         });
       }
@@ -171,6 +177,9 @@ exports.searchYelp = function(req, res) {
           User.findById(req.user.id, function(err, user) {
             event2 = getBestBusiness(events2, user.user_history.events2);
             user.user_history.events2.unshift(event2);
+            if (user.user_history.events2.length > 10) {
+              user.user_history.events2.pop();
+            }
             user.save();
           });
         }
@@ -188,6 +197,9 @@ exports.searchYelp = function(req, res) {
             User.findById(req.user.id, function(err, user) {
               dinner = getBestBusiness(dinners, user.user_history.dinners);
               user.user_history.dinners.unshift(dinner);
+              if (user.user_history.dinners.length > 10) {
+                user.user_history.dinners.pop();
+              }
               user.save();
             });
           }
@@ -205,6 +217,9 @@ exports.searchYelp = function(req, res) {
               User.findById(req.user.id, function(err, user) {
                 nightlife = getBestBusiness(nightlives, user.user_history.nightlives);
                 user.user_history.nightlives.unshift(nightlife);
+                if (user.user_history.nightlives.length > 10) {
+                  user.user_history.nightlives.pop();
+                }
                 user.save();
                 res.render('itinerary/itinerary', {
                   searchTerm: req.body.city,
