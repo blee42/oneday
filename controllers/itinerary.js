@@ -66,12 +66,12 @@ function getBestBusiness(businesses, visited) {
   });
 
   j = 0;
-  if (scores == [] || typeof(scores[0]) === "undefined") {
+  if (scores == [] || typeof scores[0] === "undefined") {
     return nullLocation;
   }
   while (j < scores.length && alreadyVisited(businesses[scores[j][1]], visited)) {
    j = j + 1;
-   if (typeof(scores[j+1]) === "undefined") {
+   if (typeof scores[j+1] === "undefined") {
     return nullLocation;
    }
   }
@@ -170,7 +170,9 @@ exports.searchYelp = function(req, res) {
 
   // Brunch
   yelp.search({term: bquery, location: req.body.city}, function(err, brunchData) {
-    if(!typeof(brunchData.businesses)==='undefined') {
+    if(typeof brunchData.businesses ==='undefined') {
+    }
+    else {
       brunchData.businesses.forEach(function(i) {
         brunches.push(stripData(i));
       });      
@@ -192,7 +194,7 @@ exports.searchYelp = function(req, res) {
 
     // Event ("outdoors")
     yelp.search({term: e1query, location: req.body.city}, function(err, eventsData) {
-      if(!typeof(eventsData.businesses)==='undefined') {
+      if(!(typeof eventsData.businesses ==='undefined')) {
         eventsData.businesses.forEach(function(i) {
           events1.push(stripData(i));
         });
@@ -214,7 +216,7 @@ exports.searchYelp = function(req, res) {
 
       // Event ("indoors")
       yelp.search({term: e2query, location: req.body.city}, function(err, eventsData) {
-        if(!typeof(eventsData.businesses)==='undefined') {
+        if(!(typeof eventsData.businesses ==='undefined')) {
           eventsData.businesses.forEach(function(i) {
             events2.push(stripData(i));
           });
@@ -236,7 +238,8 @@ exports.searchYelp = function(req, res) {
 
         // Dinner             
         yelp.search({term: dquery, location: req.body.city}, function(err, dinnerData) {
-          if(!typeof(dinnerData.businesses)==='undefined') {
+          if(typeof dinnerData.businesses ==='undefined') { }
+            else {
             dinnerData.businesses.forEach(function(i) {
               dinners.push(stripData(i));
             });
@@ -258,7 +261,7 @@ exports.searchYelp = function(req, res) {
             
           // Nightlife    
           yelp.search({term: nlquery, location: req.body.city}, function(err, barsData) {
-            if(!typeof(barsData.businesses)==='undefined') {
+            if(!(typeof barsData.businesses ==='undefined')) {
               barsData.businesses.forEach(function(i) {
                 nightlives.push(stripData(i));
               });
