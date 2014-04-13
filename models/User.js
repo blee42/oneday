@@ -27,6 +27,14 @@ var userSchema = new mongoose.Schema({
     cost: { type: Number, default: 4 },
   },
 
+  queries: {
+    brunch: { type: String, default: "lunch or brunch or breakfast"},
+    event1: { type: String, default: "park or zoo or hike"},
+    event2: { type: String, default: "museum or landmark or concert"},
+    dinner: { type: String, default: "dinner"},
+    nlquery: { type: String, default: "nightlife or bar or club"},
+  },
+
   user_history: {
     brunches: {type: Array, default: []},
     events1: {type: Array, default: []},

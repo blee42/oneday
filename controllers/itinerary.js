@@ -144,8 +144,29 @@ exports.searchYelp = function(req, res) {
 
   var brunch, event1, event2, dinner, nightlife;
 
+  var bquery;
+  var e1query;
+  var e2query;
+  var dquery;
+  var nlquery;
+
+  if (req.user) {
+    bquery = req.user.queries.brunch;
+    e1query = req.user.queries.event1;
+    e2query = req.user.queries.event2;
+    dquery = req.user.queries.dinner;
+    nlquery = req.user.queries.nightlife;
+  }
+  else {
+    bquery = "lunch or brunch or breakfast";
+    e1query = "park or zoo or hike";
+    e2query = "museum or landmark or concert";
+    dquery = "dinner";
+    nlquery = "bar or nightlife or club";
+  }
+
   // Brunch
-  yelp.search({term: "lunch or brunch or breakfast", location: req.body.city}, function(err, brunchData) {
+  yelp.search({term: bquery, location: req.body.city}, function(err, brunchData) {
     brunchData.businesses.forEach(function(i) {
       brunches.push(stripData(i));
     });
@@ -165,7 +186,7 @@ exports.searchYelp = function(req, res) {
     }
 
     // Event ("outdoors")
-    yelp.search({term:"park or zoo or hike", location: req.body.city}, function(err, eventsData) {
+    yelp.search({term: e1query, location: req.body.city}, function(err, eventsData) {
       eventsData.businesses.forEach(function(i) {
         events1.push(stripData(i));
       });
@@ -185,10 +206,10 @@ exports.searchYelp = function(req, res) {
       }
 
       // Event ("indoors")
-      yelp.search({term:"museum or landmark", location: req.body.city}, function(err, eventsData) {
-      eventsData.businesses.forEach(function(i) {
-        events2.push(stripData(i));
-      });
+      yelp.search({term: e2query, location: req.body.city}, function(err, eventsData) {
+        eventsData.businesses.forEach(function(i) {
+          events2.push(stripData(i));
+        });
 
         if (req.user) {
           User.findById(req.user.id, function(err, user) {
@@ -205,7 +226,7 @@ exports.searchYelp = function(req, res) {
         }
 
         // Dinner             
-        yelp.search({term:"dinner", location: req.body.city}, function(err, dinnerData) {
+        yelp.search({term: dquery, location: req.body.city}, function(err, dinnerData) {
           dinnerData.businesses.forEach(function(i) {
             dinners.push(stripData(i));
           });
@@ -225,7 +246,7 @@ exports.searchYelp = function(req, res) {
           }
             
           // Nightlife    
-          yelp.search({term:"nightlife or pub or bar or club or lounge", location: req.body.city}, function(err, barsData) {
+          yelp.search({term: nlquery, location: req.body.city}, function(err, barsData) {
             barsData.businesses.forEach(function(i) {
               nightlives.push(stripData(i));
             });

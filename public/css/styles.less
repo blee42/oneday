@@ -171,9 +171,15 @@ legend {
   top:0;
   text-align: left;
   height:100%;
+  width:100%
   color: white;
   background-image: url('../img/city-lights-bokeh.jpg');
   background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+#home-row {
+  margin:10px;
 }
 
 #search-container {
@@ -263,9 +269,19 @@ a .div-link {
 .container-fluid {
   margin:0;
   padding:0;
+  height:100%;
+  width:100%;
   color:white;
   background-image: url('../img/city-lights-bokeh.jpg');
   background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+#details-wrap {
+  position: fixed;
+  height:100%;
+  width:100%;
+  top:0;
 }
 
 #details-container {
@@ -273,6 +289,7 @@ a .div-link {
   background-color: black;
   font-size: large;
   opacity: 0.9;
+  overflow:hidden;
 }
 
 #details-text{
@@ -280,7 +297,7 @@ a .div-link {
 }
 
 #name-box {
-  margin: 50px 0 50px 0;
+  margin: 70px 0 50px 0;
 }
 
 #star-box {
@@ -319,7 +336,7 @@ legend {
 
 @media screen and (max-width: 768px) {
   body {
-    padding-top: 40px;
+    padding-top: 60px;
   }
   .event-arrow {
   margin: 75px 15px 75px 0;
@@ -327,6 +344,13 @@ legend {
   .event-text {
   margin:15px 15px 5px 15px;
   }
+
+  .stalemate-font {
+  font-family: Stalemate;
+  font-size: 30pt;
+  color:white;
+  }
+
 }
 
 // Onboarding Form
