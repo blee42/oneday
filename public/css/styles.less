@@ -3,7 +3,14 @@
 @import "lib/bootstrap/bootstrap";
 @import "lib/bootstrap-social";
 @import "themes/default";
-@import url(http://fonts.googleapis.com/css?family=Stalemate);
+// @import url(http://fonts.googleapis.com/css?family=Stalemate);
+
+@font-face {
+  font-family: 'Stalemate';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Stalemate'), local('Stalemate-Regular'), url(../fonts/stalemate.woff) format('woff');
+}
 
 // Scaffolding
 // -------------------------
@@ -79,6 +86,7 @@ body {
 
 .navbar-default .navbar-nav > li > a {
   margin:20px;
+  // margin-top:15px;
   color:white;
   font-size: normal;
 }
@@ -103,7 +111,8 @@ body {
 }
 .stalemate-font {
   font-family: Stalemate;
-  font-size: 50pt;
+  // margin-top:15px;
+  font-size: 52pt;
   color:white;
 }
 
@@ -497,4 +506,14 @@ content: none;
 #progressbar li.active:before, #progressbar li.active:after {
 background: #27AE60;
 color: white;
+}
+
+
+/* Profile page nonsense */
+.page-header {
+  border: none;
+}
+
+h3 {
+  margin-left: 240px;
 }
