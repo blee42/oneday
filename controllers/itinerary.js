@@ -167,9 +167,11 @@ exports.searchYelp = function(req, res) {
 
   // Brunch
   yelp.search({term: bquery, location: req.body.city}, function(err, brunchData) {
-    brunchData.businesses.forEach(function(i) {
-      brunches.push(stripData(i));
-    });
+    if(!typeof(brunchData.businesses)==='undefined') {
+      brunchData.businesses.forEach(function(i) {
+        brunches.push(stripData(i));
+      });      
+    }
 
     if (req.user) {
       User.findById(req.user.id, function(err, user) {
@@ -187,9 +189,11 @@ exports.searchYelp = function(req, res) {
 
     // Event ("outdoors")
     yelp.search({term: e1query, location: req.body.city}, function(err, eventsData) {
-      eventsData.businesses.forEach(function(i) {
-        events1.push(stripData(i));
-      });
+      if(!typeof(eventsData.businesses)==='undefined') {
+        eventsData.businesses.forEach(function(i) {
+          events1.push(stripData(i));
+        });
+      }
 
       if (req.user) {
         User.findById(req.user.id, function(err, user) {
@@ -207,9 +211,11 @@ exports.searchYelp = function(req, res) {
 
       // Event ("indoors")
       yelp.search({term: e2query, location: req.body.city}, function(err, eventsData) {
-        eventsData.businesses.forEach(function(i) {
-          events2.push(stripData(i));
-        });
+        if(!typeof(eventsData.businesses)==='undefined') {
+          eventsData.businesses.forEach(function(i) {
+            events2.push(stripData(i));
+          });
+        }
 
         if (req.user) {
           User.findById(req.user.id, function(err, user) {
@@ -227,9 +233,11 @@ exports.searchYelp = function(req, res) {
 
         // Dinner             
         yelp.search({term: dquery, location: req.body.city}, function(err, dinnerData) {
-          dinnerData.businesses.forEach(function(i) {
-            dinners.push(stripData(i));
-          });
+          if(!typeof(dinnerData.businesses)==='undefined') {
+            dinnerData.businesses.forEach(function(i) {
+              dinners.push(stripData(i));
+            });
+          }
 
           if (req.user) {
             User.findById(req.user.id, function(err, user) {
@@ -247,9 +255,11 @@ exports.searchYelp = function(req, res) {
             
           // Nightlife    
           yelp.search({term: nlquery, location: req.body.city}, function(err, barsData) {
-            barsData.businesses.forEach(function(i) {
-              nightlives.push(stripData(i));
-            });
+            if(!typeof(barsData.businesses)==='undefined') {
+              barsData.businesses.forEach(function(i) {
+                nightlives.push(stripData(i));
+              });
+            }
 
             if (req.user) {
               User.findById(req.user.id, function(err, user) {
