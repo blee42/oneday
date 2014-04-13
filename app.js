@@ -6,6 +6,7 @@ var express = require('express');
 var MongoStore = require('connect-mongo')(express);
 var flash = require('express-flash');
 var path = require('path');
+var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var expressValidator = require('express-validator');
