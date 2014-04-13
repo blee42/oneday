@@ -1,26 +1,27 @@
 extends ../layout
 
 block content
-  form(method='POST')
-    legend.centered Sign In
-    input(type='hidden', name='_csrf', value=_csrf)
-    .col-md-4
-    .col-md-4
-      if secrets.localAuth
-        .form-group
-          label.control-label(for='email') Email
-          input.form-control(type='text', name='email', id='email', placeholder='Email', autofocus=true)
-        .form-group
-          label.control-label(for='password') Password
-          input.form-control(type='password', name='password', id='password', placeholder='Password')
-        .form-group
-          button.btn.btn-primary(type='submit')
-            i.fa.fa-unlock-alt
-            | Login
-          a.btn.btn-link(href='/forgot') Forgot your password?
-        hr
-      if secrets.facebookAuth
-        a.btn.btn-block.btn-facebook.btn-social(href='/auth/facebook')
-          i.fa.fa-facebook
-          | Sign in with Facebook
-    .col-md-4
+  .login-wrap.container-fluid
+    form(method='POST')
+      legend.centered.login-cont Sign In
+      input(type='hidden', name='_csrf', value=_csrf)
+      .col-md-4
+      .col-md-4
+        if secrets.localAuth
+          .form-group
+            label.control-label(for='email') Email
+            input.form-control(type='text', name='email', id='email', placeholder='Email', autofocus=true)
+          .form-group
+            label.control-label(for='password') Password
+            input.form-control(type='password', name='password', id='password', placeholder='Password')
+          .form-group
+            button.btn.btn-primary(type='submit')
+              i.fa.fa-unlock-alt
+              | Login
+            a.btn.btn-link(href='/forgot') Forgot your password?
+          hr
+        if secrets.facebookAuth
+          a.btn.btn-block.btn-facebook.btn-social(href='/auth/facebook')
+            i.fa.fa-facebook
+            | Sign in with Facebook
+      .col-md-4
