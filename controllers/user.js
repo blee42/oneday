@@ -378,3 +378,10 @@ exports.postForgot = function(req, res, next) {
     res.redirect('/forgot');
   });
 };
+
+
+exports.onboardPref = function(req, res) {
+  res.render('account/onboard', {
+    title: 'Onboard Preferences'
+  });
+};
