@@ -3,7 +3,14 @@
 @import "lib/bootstrap/bootstrap";
 @import "lib/bootstrap-social";
 @import "themes/default";
-@import url(http://fonts.googleapis.com/css?family=Stalemate);
+// @import url(http://fonts.googleapis.com/css?family=Stalemate);
+
+@font-face {
+  font-family: 'Stalemate';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Stalemate'), local('Stalemate-Regular'), url(../fonts/stalemate.woff) format('woff');
+}
 
 // Scaffolding
 // -------------------------
@@ -79,6 +86,7 @@ body {
 
 .navbar-default .navbar-nav > li > a {
   margin:20px;
+  // margin-top:15px;
   color:white;
   font-size: normal;
 }
@@ -103,7 +111,7 @@ body {
 }
 .stalemate-font {
   font-family: Stalemate;
-  font-size: 50pt;
+  font-size: 52pt;
   color:white;
 }
 
@@ -331,6 +339,14 @@ a .div-link {
   top:0;
 }
 
+.slogan-text {
+  font-size: 20px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
 legend {
   padding-top:25px;
   color:white;
@@ -339,7 +355,7 @@ legend {
 
 @media screen and (max-width: 768px) {
   body {
-    padding-top: 60px;
+    padding-top: 50px;
   }
   .event-arrow {
   margin: 75px 15px 75px 0;
@@ -350,9 +366,14 @@ legend {
 
   .stalemate-font {
   font-family: Stalemate;
-  font-size: 30pt;
+  font-size: 25pt;
   color:white;
   }
+
+  #search-container {
+    margin-top: 30%;
+  }
+
 
 }
 
@@ -365,10 +386,8 @@ legend {
   top:0;
 }
 
-.form-btn {
-  width:100px;
-  text-align: center;
-  margin-bottom: 5px;
+.radio-div {
+  color: black;
 }
 
 
@@ -455,7 +474,7 @@ fieldset {
     color: white;
     text-transform: uppercase;
     font-size: 15px;
-    width: 25%;
+    width: 20%;
     float: left;
     position: relative;
 }
@@ -492,3 +511,13 @@ content: none;
 background: #27AE60;
 color: white;
 }
+
+
+/* Profile page nonsense */
+.page-header {
+  border: none;
+}
+
+// h3 {
+//   margin-left: 240px;
+// }

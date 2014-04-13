@@ -170,9 +170,7 @@ exports.searchYelp = function(req, res) {
 
   // Brunch
   yelp.search({term: bquery, location: req.body.city}, function(err, brunchData) {
-    if(typeof brunchData.businesses ==='undefined') {
-    }
-    else {
+    if(!(typeof brunchData.businesses ==='undefined')) {
       brunchData.businesses.forEach(function(i) {
         brunches.push(stripData(i));
       });      
@@ -194,7 +192,7 @@ exports.searchYelp = function(req, res) {
 
     // Event ("outdoors")
     yelp.search({term: e1query, location: req.body.city}, function(err, eventsData) {
-      if(!(typeof eventsData.businesses ==='undefined')) {
+      if(!(typeof eventsData.businesses==='undefined')) {
         eventsData.businesses.forEach(function(i) {
           events1.push(stripData(i));
         });
@@ -238,8 +236,7 @@ exports.searchYelp = function(req, res) {
 
         // Dinner             
         yelp.search({term: dquery, location: req.body.city}, function(err, dinnerData) {
-          if(typeof dinnerData.businesses ==='undefined') { }
-            else {
+          if(!(typeof dinnerData.businesses==='undefined')) {
             dinnerData.businesses.forEach(function(i) {
               dinners.push(stripData(i));
             });

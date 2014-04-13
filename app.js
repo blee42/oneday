@@ -124,6 +124,7 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 
 
 app.get('/account/onboard', passportConf.isAuthenticated, userController.onboardPref);
+app.post('/account/save-pref', passportConf.isAuthenticated, userController.saveOnboardPref);
 
 // Itinerary Stuff
 app.get('/itinerary', itineraryController.getItinerary);

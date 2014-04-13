@@ -105,7 +105,7 @@ exports.postSignup = function(req, res, next) {
     }
     req.logIn(user, function(err) {
       if (err) return next(err);
-      res.redirect('/');
+      res.redirect('/account/onboard');
     });
   });
 };
@@ -384,4 +384,9 @@ exports.onboardPref = function(req, res) {
   res.render('account/onboard', {
     title: 'Onboard Preferences'
   });
+};
+
+exports.saveOnboardPref = function(req, res) {
+  console.log(req.body);
+  res.redirect('/');
 };

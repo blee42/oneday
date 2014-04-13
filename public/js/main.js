@@ -83,8 +83,12 @@ $(document).ready(function() {
 		});
 	});
 
-	$(".submit").click(function(){
-		return false;
-	})
+	// $(".submit").click(function(){
+	// 	return false;
+	// })
+
+	$(".btn-form").click(function(){
+		$(".btn-form").addClass("active");
+	});
  
 });

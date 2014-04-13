@@ -2,44 +2,68 @@ extends ../layout
 
 block content
 	.container-fluid.onboard-wrap
-		form#msform
+		form(method='POST', action='/account/save-pref')#msform
+			input(type='hidden', name='_csrf', value=_csrf)
 			ul#progressbar
-				li.active Step 1
+				li.active Start
 				li.active Step 2
 				li.active Step 3
 				li.active Step 4
+				li.active End
 			fieldset
-				h2.fs-title Step 1
+				h2.fs-title Start
 				h3.fs-subtitle Let us help you plan your perfect day. Click next to give us your preferences.
 				input.next.action-button(type='button', name='next', value='Next')
 			fieldset
 				h2.fs-title Step 2
-				h3.fs-subtitle What food do you like?
-				input(type='text', name='name')
-				input(type='text', name='facebook', placeholder='placeholder')
-				input(type='text', name='gplus', placeholder='Google Plus')
+				h3.fs-subtitle Your friends are coming to town and you want to take them out to eat. Your first choice of grub is? 
+				.btn-group(data-toggle='buttons')
+					label.btn.btn-default
+						input#food-pref(type='radio', name='food-pref', value='American')
+						| American
+					label.btn.btn-default
+						input#food-pref(type='radio', name='food-pref', value='Chinese')
+						| Chinese
+					label.btn.btn-default
+						input#food-pref(type='radio', name='food-pref', value='Ethopian')
+						| Ethopian
 				input.previous.action-button(type='button', name='previous', value='Previous')
 				input.next.action-button(type='button', name='next', value='Next')
 			fieldset
 				h2.fs-title Step 3
 				h3.fs-subtitle Your house is on fire. What do you grab first?
-				button.btn.btn-default.form-btn Your Shoes
+				.btn-group(data-toggle='buttons')
+					label.btn.btn-default
+						input#place-pref(type='radio', name='place-pref', value='Compass')
+						| Compass
+					label.btn.btn-default
+						input#place-pref(type='radio', name='place-pref', value='Journal')
+						| Journal
+					label.btn.btn-default
+						input#place-pref(type='radio', name='place-pref', value='Phone')
+						| Smart phone
 				br
-				button.btn.btn-default.form-btn Your face
-				br
-				button.btn.btn-default.form-btn Your dog
-				br
-				//- input(type='text', name='fname', placeholder='First Name')
-				//- input(type='text', name='lname', placeholder='Last Name')
-				//- input(type='text', name='phone', placeholder='Phone')
 				input.previous.action-button(type='button', name='previous', value='Previous')
 				input.next.action-button(type='button', name='next', value='Next')
 			fieldset
 				h2.fs-title Step 4
-				h3.fs-subtitle How do you like to get there?
-				button(type='btn', name='walk', placeholder='First Name')
-				button(type='btn', name='drive', placeholder='Last Name')
-				button(type='btn', name='public', placeholder='Phone')
+				h3.fs-subtitle What is your preferred form of transportation?
+				.btn-group(data-toggle='buttons')
+					label.btn.btn-default
+						input#trans-pref(type='radio', name='trans-pref', value='Walking')
+						| Walking
+					label.btn.btn-default
+						input#trans-pref(type='radio', name='trans-pref', value='Driving')
+						| Driving
+					label.btn.btn-default
+						input#trans-pref(type='radio', name='trans-pref', value='Public Transit')
+						| Public Transit
+				br
+				input.previous.action-button(type='button', name='previous', value='Previous')
+				input.next.action-button(type='button', name='next', value='Next')
+			fieldset
+				h2.fs-title End
+				h3.fs-subtitle Thanks for giving us your preferences!  Feel free to change them in your account settings. Click submit and enter the city you are spending your day in!
 				input.previous.action-button(type='button', name='previous', value='Previous')
 				input.submit.action-button(type='submit', name='submit', value='Submit')
 
