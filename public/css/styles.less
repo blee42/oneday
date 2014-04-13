@@ -53,24 +53,18 @@ body {
 }
 
 .navbar-brand {
-  // background-image: url('../img/npm-logo.png');
-  background-repeat: no-repeat;
-  background-size: 40px;
-  background-position: left center;
-  // padding-left: 50px;
-  // margin-left: 15px;
   height: 45px;
   font-size: 20pt;
 }
 
 .navbar-default .navbar-brand{
   color:white;
-  margin:25px;
+  margin:20px;
 }
 
 .navbar-default .navbar-brand:hover{
   color:white;
-  margin:25px;
+  margin:20px;
 }
 
 .navbar {
@@ -81,17 +75,41 @@ body {
 }
 
 .navbar-default .navbar-nav > li > a {
+  margin:20px;
   color:white;
+  font-size: normal;
 }
 
 .navbar-default .navbar-nav > li > a:hover{
   color:white;
 }
 
+.navbar-toggle {
+  margin:20px 25px 20px 25px;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  background-color: black;
+  color:white;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: black;
+  color: white;
+}
 .stalemate-font {
   font-family: Stalemate;
   font-size: 50pt;
   color:white;
+}
+
+.caret {
+  font-size: large;
+}
+
+.profile-image {
+  margin:0px 10px 0px 5px;
 }
 
 // Social Buttons
@@ -278,6 +296,26 @@ a .div-link {
   margin: 75px 0 75px 0;
 }
 
+#form-horizontal {
+  margin-top: 100px;
+}
+
+.login-cont{
+  margin-top: 100px;
+}
+
+.login-wrap {
+  position: fixed;
+  height:100%;
+  width:100%;
+  top:0;
+}
+
+legend {
+  padding-top:25px;
+  color:white;
+}
+
 
 @media screen and (max-width: 768px) {
   body {
@@ -289,4 +327,134 @@ a .div-link {
   .event-text {
   margin:15px 15px 5px 15px;
   }
+}
+
+// Onboarding Form
+.onboard-wrap {
+  color: white;
+  position:fixed;
+  height: 100%;
+  width: 100%;
+  top:0;
+}
+
+fieldset {
+  text-align: center;
+}
+
+/*form styles*/
+#msform {
+  width: 400px;
+  margin: 50px auto;
+  text-align: center;
+  position: relative;
+  margin-top:125px;
+  height:inherit;
+}
+#msform fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding: 20px 30px;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 10%;
+  /*stacking fieldsets above each other*/
+  position: absolute;
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+  display: none;
+}
+/*inputs*/
+#msform input, #msform textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: white;
+    font-size: 13px;
+}
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: #27AE60;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+
+}
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+/*headings*/
+.fs-title {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: black;
+    margin-bottom: 10px;
+}
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 15px;
+    color: black;
+    margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+    padding-top: 30px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+#progressbar li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+}
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 20px;
+    line-height: 20px;
+    display: block;
+    font-size: 10px;
+    color: white;
+    background: white;
+    border-radius: 3px;
+    margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 5px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+/*connector not needed before the first step*/
+content: none;
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active:after {
+background: #27AE60;
+color: white;
 }

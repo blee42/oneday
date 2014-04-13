@@ -29,9 +29,11 @@
               img.profile-image(src='#{user.profile.picture}')
             else
               img.profile-image(src='#{user.gravatar(60)}')
-            | #{user.profile.name || user.email || user.id}&nbsp;
+            //- | #{user.profile.name || user.email || user.id}&nbsp;
             i.caret
           ul.dropdown-menu
             li: a(href='/account') My Account
+            li.divider
+            li: a(href='/account/onboard') Change Preferences
             li.divider
             li: a(href='/logout') Logout
