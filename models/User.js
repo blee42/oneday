@@ -28,11 +28,11 @@ var userSchema = new mongoose.Schema({
   },
 
   user_history: {
-    brunches: {type: Array, default: ""},
-    events1: {type: Array, default: ""},
-    events2: {type: Array, default: ""},
-    dinners: {type: Array, default: ""},
-    nightlives: {type: Array, default: ""},
+    brunches: {type: Array, default: []},
+    events1: {type: Array, default: []},
+    events2: {type: Array, default: []},
+    dinners: {type: Array, default: []},
+    nightlives: {type: Array, default: []},
   },
 
   resetPasswordToken: String,

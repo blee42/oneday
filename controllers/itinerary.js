@@ -118,7 +118,22 @@ exports.getDetail = function(req, res) {
   }) 
 };
 
+// currently lacks a button
+exports.clearHistory = function(req, res) {
+  User.findById(req.user.id, function(err, user) {
+    user.user_history.brunches = [];
+    user.user_history.events1 = [];
+    user.user_history.events2 = [];
+    user.user_history.dinners = [];
+    user.user_history.nightlives = [];
+  })
+};
+
 exports.searchYelp = function(req, res) {
+  if (!(req.body.city && req.body.city.length > 0)) {
+    return res.redirect("/");
+  }
+
   var brunches = [];
   var events1 = [];
   var events2 = [];
