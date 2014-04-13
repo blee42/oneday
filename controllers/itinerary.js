@@ -66,11 +66,14 @@ function getBestBusiness(businesses, visited) {
   });
 
   j = 0;
-  if (scores == [] || typeof(scores[0]) == "undefined") {
+  if (scores == [] || typeof(scores[0]) === "undefined") {
     return nullLocation;
   }
-  while (alreadyVisited(businesses[scores[j][1]], visited)) {
-   j++;
+  while (j < scores.length && alreadyVisited(businesses[scores[j][1]], visited)) {
+   j = j + 1;
+   if (typeof(scores[j+1]) === "undefined") {
+    return nullLocation;
+   }
   }
   return businesses[scores[j][1]];
 };
