@@ -13,3 +13,4 @@
 //= require lib/bootstrap.min
 //= require lib/jquery.easing.min.js
 //= require main
+//= require analytics
