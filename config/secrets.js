@@ -1,5 +1,5 @@
 module.exports = {
-  db: process.env.MONGODB|| 'mongodb://localhost:27017/test',
+  db: process.env.MONGODB|| 'mongodb://localhost:27017/oneday',
 
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
@@ -85,9 +85,9 @@ module.exports = {
   },
 
   foursquare: {
-    clientId: process.env.FOURSQUARE_ID || 'Your Client ID',
-    clientSecret: process.env.FOURSQUARE_SECRET || 'Your Client Secret',
-    redirectUrl: process.env.FOURSQUARE_REDIRECT_URL || 'http://localhost:3000/auth/foursquare/callback'
+    clientId: process.env.FOURSQUARE_ID || 'KIXGGK34HR2RR021SNOI4IGRMYDFOC2TKUXZRII551K2Z2FJ',
+    clientSecret: process.env.FOURSQUARE_SECRET || 'CLRP1K4AV5L4JL5YN2IOYC0RKVZNEZETYTVU0IOTSVUCQ1KA',
+    redirectUrl: process.env.FOURSQUARE_REDIRECT_URL || 'http://http://127.0.0.1:3000/auth/foursquare/callback',
   },
 
   venmo: {

@@ -6,6 +6,11 @@ var secrets = require("../config/secrets");
 var async = require("async");
 var yelp = require("yelp").createClient(secrets.yelp);
 var User = require("../models/User");
+var secrets = {};
+secrets['clientId'] = 'KIXGGK34HR2RR021SNOI4IGRMYDFOC2TKUXZRII551K2Z2FJ';
+secrets['clientSecret'] = 'CLRP1K4AV5L4JL5YN2IOYC0RKVZNEZETYTVU0IOTSVUCQ1KA';
+secrets['redirectUrl'] = 'http://http://127.0.0.1:3000/auth/foursquare/callback';
+var foursquare = require('node-foursquare')({config:secrets});
 
 // var visited_businesses = [];
 var nullLocation = {}
@@ -22,6 +27,8 @@ function stripData(data) {
   info["rating"] = data["rating"];
   info["phone"] = phoneFormat(data["phone"]);
   info["url"] = data["url"];
+  info["latitude"] = data["latitude"];
+  info["longitude"] = data["longitude"];
   info["snippet_text"] = data["snippet_text"];
   info["review_cnt"] = data["review_count"];
   info["categories"] = data["categories"];
@@ -40,6 +47,15 @@ function phoneFormat(phone) {
   }
 }
 
+function addFoursquareInformation(data, longitude, latitude) {
+	data['latitude'] = latitude;
+	data['longitude'] = longitude;
+	foursquare.search(longitude, latitude, {params: data.name}, function(err, result) {
+		console.log(result);
+		console.log("yay you got here");
+	});
+};
+
 function stripDataDetail(data) {
   var info = {};
   info["name"] = data["name"];
@@ -47,6 +63,8 @@ function stripDataDetail(data) {
   info["rating"] = data["rating"];
   info["phone"] = phoneFormat(data["phone"]);
   info["url"] = data["url"];
+  info["latitude"] = data["latitude"];
+  info["longitude"] = data["longitude"];
   info["snippet_text"] = data["snippet_text"];
   info["review_cnt"] = data["review_count"];
   info["categories"] = data["categories"];
@@ -129,8 +147,11 @@ exports.searchYelp = function(req, res) {
 
   // Brunch
   yelp.search({term: "lunch or brunch or breakfast", location: req.body.city}, function(err, brunchData) {
+  	longitude = brunchData.region.center.longitude;
+  	latitude = brunchData.region.center.latitude;
     brunchData.businesses.forEach(function(i) {
-      brunches.push(stripData(i));
+    	addFoursquareInformation(i, longitude, latitude);
+    	brunches.push(stripData(i));
     });
 
     if (req.user) {
