@@ -7,9 +7,9 @@
       span.icon-bar
     if !searchTerm
       if title != 'Home'
-        a.navbar-brand(href='/') One Day
+        a.navbar-brand(href='/') one day
     else
-      a.navbar-brand(href='/') One Day in 
+      a.navbar-brand(href='/') one day in 
         span.stalemate-font #{searchTerm}
   .collapse.navbar-collapse
     //- ul.nav.navbar-nav
@@ -18,10 +18,10 @@
     ul.nav.navbar-nav.navbar-right
       if !user
         li(class=title=='Login'?'active':undefined)
-          a(href='/login') Login
+          a(href='/login') login
         if secrets.localAuth
           li(class=title=='Create Account'?'active':undefined)
-            a(href='/signup') Create Account
+            a(href='/signup') create account
       else
         li.dropdown(class=title=='Account Management'?'active':undefined)
           a.dropdown-toggle(href='#', data-toggle='dropdown')
@@ -32,8 +32,8 @@
             //- | #{user.profile.name || user.email || user.id}&nbsp;
             i.caret
           ul.dropdown-menu
-            li: a(href='/account') My Account
+            li: a(href='/account') my account
             li.divider
-            li: a(href='/account/onboard') Change Preferences
+            li: a(href='/account/onboard') change preferences
             li.divider
-            li: a(href='/logout') Logout
+            li: a(href='/logout') logout

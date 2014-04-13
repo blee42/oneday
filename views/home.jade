@@ -1,4 +1,4 @@
-extends layout
+extends layout_home
 
 block content
 	#home-container
@@ -6,7 +6,7 @@ block content
 			.row#home-row
 				.col-md-4
 				.col-md-4#search-container
-					h1 One Day in...
+					h1 one day in...
 					script(type='text/javascript')
 						function Out() {$('body').empty();$('body').append("<img src='./public/img/loader.gif'");}
 					form(method="POST", action='/itinerary', onsubmit="Out()")
