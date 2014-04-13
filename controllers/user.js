@@ -387,6 +387,66 @@ exports.onboardPref = function(req, res) {
 };
 
 exports.saveOnboardPref = function(req, res) {
+  if (req.user) {
+    User.findById(req.user.id, function(err, user) {
+      user.preferences.foodPref = req.body["food-pref"];
+      user.preferences.placePref = req.body["place-pref"];
+      user.preferences.transPref = req.body["trans-pref"];
+      computeQueries(user);
+      //computeRating(user);
+      user.save();
+    });
+  }
   console.log(req.body);
   res.redirect('/');
 };
+
+function computeQueries(user) {
+  if (user.preferences.foodPref == "Chinese") {
+    user.queries.brunch = "chinese lunch";
+    user.queries.dinner = "chinese dinner buffet";
+  }
+  else if (user.preferences.foodPref == "American") {
+    user.queries.brunch = "egg waffle brunch pancakes burger";
+    user.queries.dinner = "steak sausage pizza mac burger";
+  }
+  else if (user.preferences.foodPref == "Ethopian") { //misspelled....
+    user.queries.brunch = "flatbread beans spicy breakfast";
+    user.queries.dinner = "flatbread dinner spicy middle east";
+  }
+  else {
+    user.queries.brunch = "bagels cereal breakfast";
+    user.queries.dinner = "ribs lamb lobster";
+    user.queries.event2 = "laptop";
+  }
+
+  if (user.preferences.placePref == "Journal") {
+    user.queries.event1 = "park or zoo";
+    user.queries.event2 = "library museum gallery";
+  }
+  else if (user.preferences.placePref == "Compass") {
+    user.queries.event1 = "hike park sailing climb";
+    user.queries.event2 = "planetarium museum hall";
+  }
+  else if (user.preferences.placePref == "Phone") {
+    user.queries.event1 = "ice cream university social shopping";
+    user.queries.event2 = "concert comedy theatre";
+  }
+  else {
+    user.queries.event1 = "skiing ice rink mountain";
+    user.queries.event2 = "cafe bookstore engineering";
+  }
+
+  if (user.preferences.transPref == "Walking") {
+    user.queries.nightlife = "party bar movie night";
+  }
+  else if (user.preferences.transPref == "Driving") {
+    user.queries.nightlife = "club bars lounge night";
+  }
+  else if (user.preferences.transPref == "Public Transit") {
+    user.queries.nightlife = "club night party pub";
+  }
+  else {
+    user.queries.nightlife = "bed";
+  }
+}

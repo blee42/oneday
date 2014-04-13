@@ -153,7 +153,7 @@ exports.searchYelp = function(req, res) {
   var dquery;
   var nlquery;
 
-  if (req.user) {
+  if (req.user && req.user.queries.brunch != "") {
     bquery = req.user.queries.brunch;
     e1query = req.user.queries.event1;
     e2query = req.user.queries.event2;
@@ -167,6 +167,12 @@ exports.searchYelp = function(req, res) {
     dquery = "dinner";
     nlquery = "bar or nightlife or club";
   }
+
+  console.log(bquery);
+  console.log(e1query);
+  console.log(e2query);
+  console.log(dquery);
+  console.log(nlquery);
 
   // Brunch
   yelp.search({term: bquery, location: req.body.city}, function(err, brunchData) {

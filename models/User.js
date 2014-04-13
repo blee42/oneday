@@ -22,9 +22,9 @@ var userSchema = new mongoose.Schema({
   },
 
   preferences: {
-    foodstyle: { type: String, default: ""},
-    distance: { type: Number, default: 10},
-    cost: { type: Number, default: 4 },
+    foodPref: { type: String, default: ""},
+    placePref: { type: String, default: ""},
+    transPref: { type: String, default: ""},
   },
 
   queries: {
@@ -32,7 +32,7 @@ var userSchema = new mongoose.Schema({
     event1: { type: String, default: "park or zoo or hike"},
     event2: { type: String, default: "museum or landmark or concert"},
     dinner: { type: String, default: "dinner"},
-    nlquery: { type: String, default: "nightlife or bar or club"},
+    nightlife: { type: String, default: "nightlife or bar or club"},
   },
 
   user_history: {
