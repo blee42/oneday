@@ -123,6 +123,8 @@ app.post('/account/delete', passportConf.isAuthenticated, userController.postDel
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
 
 
+app.get('/account/onboard', passportConf.isAuthenticated, userController.onboardPref);
+
 // Itinerary Stuff
 app.get('/itinerary', itineraryController.getItinerary);
 app.get('/itinerary/detail-:id', itineraryController.getDetail);
