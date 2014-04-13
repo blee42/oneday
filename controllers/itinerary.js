@@ -66,11 +66,14 @@ function getBestBusiness(businesses, visited) {
   });
 
   j = 0;
-  if (scores == [] || typeof(scores[0]) == "undefined") {
+  if (scores == [] || typeof scores[0] === "undefined") {
     return nullLocation;
   }
-  while (alreadyVisited(businesses[scores[j][1]], visited)) {
-   j++;
+  while (j < scores.length && alreadyVisited(businesses[scores[j][1]], visited)) {
+   j = j + 1;
+   if (typeof scores[j+1] === "undefined") {
+    return nullLocation;
+   }
   }
   return businesses[scores[j][1]];
 };
@@ -255,7 +258,7 @@ exports.searchYelp = function(req, res) {
             
           // Nightlife    
           yelp.search({term: nlquery, location: req.body.city}, function(err, barsData) {
-            if(!(typeof barsData.businesses==='undefined')) {
+            if(!(typeof barsData.businesses ==='undefined')) {
               barsData.businesses.forEach(function(i) {
                 nightlives.push(stripData(i));
               });
