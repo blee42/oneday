@@ -4,7 +4,7 @@ block content
 	#itinerary-wrap
 		#itinerary-container
 			ul.list-group.no-dot
-				a(href="/itinerary/detail-#{brunchPlace.id}").div-link
+				a(href="/itinerary/detail-#{brunchPlace.id}/#{searchTerm}").div-link
 					li.row.event-entry#event1
 						.col-md-10.event-text
 							img(src="fonts/food.png").event-icon
@@ -26,7 +26,7 @@ block content
 							span #{brunchPlace.location}
 						.col-md-2.event-arrow-container
 							span.fa.fa-angle-right.event-arrow
-				a(href="/itinerary/detail-#{eventPlace1.id}").div-link
+				a(href="/itinerary/detail-#{eventPlace1.id}/#{searchTerm}").div-link
 					li.row.event-entry#event2
 						.col-md-10.event-text
 							img(src="fonts/star.png").event-icon
@@ -47,7 +47,7 @@ block content
 							span #{eventPlace1.location}
 						.col-md-2.event-arrow-container
 							span.fa.fa-angle-right.event-arrow
-				a(href="/itinerary/detail-#{eventPlace2.id}").div-link
+				a(href="/itinerary/detail-#{eventPlace2.id}/#{searchTerm}").div-link
 					li.row.event-entry#event3
 						.col-md-10.event-text
 							img(src="fonts/star.png").event-icon
@@ -68,7 +68,7 @@ block content
 							span #{eventPlace2.location}
 						.col-md-2.event-arrow-container
 							span.fa.fa-angle-right.event-arrow
-				a(href="/itinerary/detail-#{dinnerPlace.id}").div-link
+				a(href="/itinerary/detail-#{dinnerPlace.id}/#{searchTerm}").div-link
 					li.row.event-entry#event4
 						.col-md-10.event-text
 							img(src="fonts/food.png").event-icon
@@ -89,7 +89,7 @@ block content
 							span #{dinnerPlace.location}
 						.col-md-2.event-arrow-container
 							span.fa.fa-angle-right.event-arrow
-				a(href="/itinerary/detail-#{nightPlace.id}").div-link
+				a(href="/itinerary/detail-#{nightPlace.id}/#{searchTerm}").div-link
 					li.row.event-entry#event5
 						.col-md-10.event-text
 							img(src="fonts/nightlife.png").event-icon

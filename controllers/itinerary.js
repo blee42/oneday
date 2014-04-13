@@ -101,6 +101,7 @@ exports.getItinerary = function(req, res) {
 exports.getDetail = function(req, res) {
   var location = [];
   var locID = req.params.id
+  var searchTerm = req.params.searchTerm
  
   yelp.business(locID, function(err, locationData) {
     // console.log(locationData);
@@ -112,6 +113,7 @@ exports.getDetail = function(req, res) {
     }
     res.render('itinerary/detail', {
       title: 'Detail Page',
+      searchTerm: searchTerm,
       loc: location[0]
       
     });

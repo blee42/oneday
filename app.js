@@ -127,7 +127,7 @@ app.get('/account/onboard', passportConf.isAuthenticated, userController.onboard
 
 // Itinerary Stuff
 app.get('/itinerary', itineraryController.getItinerary);
-app.get('/itinerary/detail-:id', itineraryController.getDetail);
+app.get('/itinerary/detail-:id/:searchTerm', itineraryController.getDetail);
 
 app.post('/itinerary', itineraryController.searchYelp);
 
