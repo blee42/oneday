@@ -385,3 +385,8 @@ exports.onboardPref = function(req, res) {
     title: 'Onboard Preferences'
   });
 };
+
+exports.saveOnboardPref = function(req, res) {
+  console.log(req.body);
+  res.redirect('/');
+};
