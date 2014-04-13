@@ -88,10 +88,28 @@ body {
   margin:20px 25px 20px 25px;
 }
 
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  background-color: black;
+  color:white;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: black;
+  color: white;
+}
 .stalemate-font {
   font-family: Stalemate;
   font-size: 50pt;
   color:white;
+}
+
+.caret {
+  font-size: large;
+}
+
+.profile-image {
+  margin:0px 10px 0px 5px;
 }
 
 // Social Buttons
@@ -314,7 +332,10 @@ legend {
 // Onboarding Form
 .onboard-wrap {
   color: white;
-  // height:100%;
+  position:fixed;
+  height: 100%;
+  width: 100%;
+  top:0;
 }
 
 fieldset {
@@ -327,6 +348,7 @@ fieldset {
   margin: 50px auto;
   text-align: center;
   position: relative;
+  margin-top:125px;
   height:inherit;
 }
 #msform fieldset {
@@ -368,6 +390,7 @@ fieldset {
     cursor: pointer;
     padding: 10px 5px;
     margin: 10px 5px;
+
 }
 #msform .action-button:hover, #msform .action-button:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
