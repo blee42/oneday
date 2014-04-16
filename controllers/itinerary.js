@@ -186,18 +186,19 @@ exports.searchYelp = function(req, res) {
 
 				if (req.user) {
 					User.findById(req.user.id, function(err, user) {
-					brunch = getBestBusiness(brunches, user.user_history.brunches);
-					user.user_history.brunches.unshift(brunch);
-					if (user.user_history.brunches.length > 10) {
-						user.user_history.brunches.pop();
-					}
-					user.save();
+						brunch = getBestBusiness(brunches, user.user_history.brunches);
+						user.user_history.brunches.unshift(brunch);
+						if (user.user_history.brunches.length > 10) {
+							user.user_history.brunches.pop();
+						}
+						user.save();
+						callback(null, 1);
 					});
 				}
 				else {
 					brunch = getBestBusiness(brunches, []);
+					callback(null, 1);
 				}
-				callback(null, 1);
 			});
 		},
 		function(callback) { //outdoors
@@ -216,12 +217,13 @@ exports.searchYelp = function(req, res) {
 							user.user_history.events1.pop();
 						}
 						user.save();
+						callback(null, 2);
 					});
 				}
 				else {
 					event1 = getBestBusiness(events1, []);
+					callback(null, 2);
 				}
-				callback(null, 2);
 			});
 		},
 		function(callback) {
@@ -240,12 +242,13 @@ exports.searchYelp = function(req, res) {
 							user.user_history.events2.pop();
 						}
 						user.save();
+						callback(null, 3);
 					});
 				}
 				else {
 					event2 = getBestBusiness(events2, []);
+					callback(null, 3);
 				}
-				callback(null, 3);
 			});
 		},
 		function(callback) { //dinner
@@ -264,12 +267,13 @@ exports.searchYelp = function(req, res) {
 							user.user_history.dinners.pop();
 						}
 						user.save();
+						callback(null, 4);
 					});
 				}
 				else {
 					dinner = getBestBusiness(dinners, []);
+					callback(null, 4);
 				}
-				callback(null, 4);
 			});
 		},
 		function(callback) {
@@ -288,16 +292,22 @@ exports.searchYelp = function(req, res) {
 							user.user_history.nightlives.pop();
 						}
 						user.save();
+						callback(null, 5);
 					});
 				}
 				else {
 					nightlife = getBestBusiness(nightlives, []);
+					callback(null, 5);
 				}
-				callback(null, 5);
 			});
 		}
 	],
 	function(err, results) {
+		console.log(brunch);
+		console.log(event1);
+		console.log(event2);
+		console.log(dinner);
+		console.log(nightlife);
 		res.render('itinerary/itinerary', {
 			searchTerm: req.body.city.charAt(0).toUpperCase() + req.body.city.slice(1).toLowerCase(),
 			title: 'Itinerary',
