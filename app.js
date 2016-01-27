@@ -129,7 +129,7 @@ app.get('/account/onboard', passportConf.isAuthenticated, userController.onboard
 app.post('/account/save-pref', passportConf.isAuthenticated, userController.saveOnboardPref);
 
 // Itinerary Stuff
-app.get('/itinerary', itineraryController.getItinerary);
+app.get('/itinerary', itineraryController.searchYelp);
 app.get('/itinerary/detail-:id/:searchTerm', itineraryController.getDetail);
 
 app.post('/itinerary', itineraryController.searchYelp);
