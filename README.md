@@ -1,6 +1,6 @@
 # One Day In
 
-We are currently experiencing technical difficulties after Heroku updgrade to MonogoLab 3. Fixes are in progress.
+We are currently experiencing technical difficulties after the Heroku app upgrade to MonogoLab 3. Fixes are in progress.
 
 ## Preface
 
